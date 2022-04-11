@@ -52,4 +52,4 @@ jobs:
         context: ./
         file: ./Dockerfile/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/m-dev:tomcat:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/m-dev:tomcat_latest
