@@ -53,3 +53,22 @@ jobs:
         file: ./Dockerfile/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/m-dev:tomcat_latest
+        
+     
+    - name: get-credentials
+      uses: google-github-actions/get-gke-credentials@v0.7.0
+      with:
+        cluster_name: frodo
+        location: us-central1-c
+        credentials: ${{ secrets.GCP_SA_KEY }}
+        project_id: frodo-343214
+        
+
+    - name: get-all
+      run: kubectl get all
+
+    - name: Deploy-Restart
+      run: kubectl rollout restart deployment/was 
+
+    - name: get-all
+      run: kubectl get all
